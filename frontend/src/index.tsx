@@ -1,17 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { MetaMaskProvider } from "metamask-react";
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.scss";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { MoralisProvider } from "react-moralis";
 
 ReactDOM.render(
   <React.StrictMode>
-    <MetaMaskProvider>
-    <App />
-    </MetaMaskProvider>
+    <MoralisProvider
+      appId="imWb3a8t97861USrezy2ciZqLv7QbqaTaCaUfY76"
+      serverUrl="https://wxuvvovjmhxs.usemoralis.com:2053/server"
+    >
+      <App />
+    </MoralisProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
