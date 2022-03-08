@@ -15,7 +15,7 @@ async function main() {
 
   // We get the contract to deploy
   const Butcher = await ethers.getContractFactory("Butcher");
-  const butcher = await Butcher.deploy("Hello, Hardhat!");
+  const butcher = await Butcher.deploy();
 
   await butcher.deployed();
 

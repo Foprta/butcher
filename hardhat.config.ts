@@ -19,6 +19,20 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
+task("reset", "Prints the list of accounts", async (taskArgs, hre) => {
+  await hre.network.provider.request({
+    method: "hardhat_reset",
+    params: [
+      {
+        forking: {
+          jsonRpcUrl: process.env.RINKEBY_URL,
+          blockNumber: 10291916,
+        },
+      },
+    ],
+  });
+});
+
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
@@ -30,6 +44,15 @@ const config: HardhatUserConfig = {
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+    // "rinkeby-fork": {
+    //   forking: {
+    //     url: process.env.RINKEBY_URL || "",
+    //     enabled: true,
+    //     blockNumber: 10291916,
+    //   },
+    //   accounts:
+    //     process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    // },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,

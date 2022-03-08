@@ -1,9 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.scss";
+import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { MoralisProvider } from "react-moralis";
+import {
+  NftStore,
+  NftStoreContext,
+  UserStore,
+  UserStoreContext,
+} from "./stores";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -11,7 +17,11 @@ ReactDOM.render(
       appId="imWb3a8t97861USrezy2ciZqLv7QbqaTaCaUfY76"
       serverUrl="https://wxuvvovjmhxs.usemoralis.com:2053/server"
     >
-      <App />
+      <NftStoreContext.Provider value={new NftStore()}>
+        <UserStoreContext.Provider value={new UserStore()}>
+          <App />
+        </UserStoreContext.Provider>
+      </NftStoreContext.Provider>
     </MoralisProvider>
   </React.StrictMode>,
   document.getElementById("root")

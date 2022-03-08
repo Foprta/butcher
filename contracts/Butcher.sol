@@ -1,23 +1,28 @@
-//SPDX-License-Identifier: Unlicense
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "hardhat/console.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract Butcher {
-    string private greeting;
-
-    constructor(string memory _greeting) {
-        console.log("Deploying a Greeter with greeting:", _greeting);
-        greeting = _greeting;
+    struct NFTEntity {
+        address contractAddress;
+        uint256 tokenId;
     }
 
-    function greet() public view returns (string memory) {
-        return greeting;
-    }
+    function sendNFTs(address _receiver, NFTEntity[] memory _tokens) public {
+        for (uint16 i = 0; i < _tokens.length; i++) {
+            ERC721 NFTContract = ERC721(_tokens[i].contractAddress);
 
-    function setGreeting(string memory _greeting) public {
-        console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
-        greeting = _greeting;
-    }
+            require(
+                NFTContract.isApprovedForAll(msg.sender, address(this)),
+                "Some contracts are not approved"
+            );
 
+            NFTContract.safeTransferFrom(
+                msg.sender,
+                _receiver,
+                _tokens[i].tokenId
+            );
+        }
+    }
 }
