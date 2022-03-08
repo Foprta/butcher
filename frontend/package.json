@@ -5,11 +5,13 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@craco/craco": "^6.4.3",
+    "@types/lodash-es": "^4.17.6",
     "@walletconnect/web3-provider": "^1.7.3",
     "@web3auth/web3auth": "^0.3.3",
     "antd": "^4.18.9",
     "axios": "^0.26.0",
     "classnames": "^2.3.1",
+    "lodash-es": "^4.17.21",
     "magic-sdk": "^8.0.1",
     "mobx": "^6.4.2",
     "mobx-react": "^7.3.0",
