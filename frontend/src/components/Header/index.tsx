@@ -6,7 +6,11 @@ export const Header: React.FC = () => {
   return (
     <Layout.Header>
       <div className="max-w-[1280px] mx-auto flex justify-between items-center h-full text-white">
-        <h1>bUtcher</h1>
+        <img
+          height="50"
+          src={process.env.PUBLIC_URL + "/logo.png"}
+          alt="Butcher Logo"
+        />
 
         <Auth />
       </div>

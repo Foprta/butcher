@@ -35,5 +35,13 @@ body,
 
 .ant-layout-footer,
 .ant-layout-header {
-  @apply bg-sky-900;
+  @apply bg-gray-200;
+}
+
+.ant-layout-content {
+  @apply bg-white;
+}
+
+.ant-tag {
+  margin-right: 0;
 }
